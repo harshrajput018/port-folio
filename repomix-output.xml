@@ -1,3 +1,164 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+src/
+  app/
+    globals.css
+    layout.tsx
+    page.tsx
+.gitignore
+next-env.d.ts
+package.json
+postcss.config.mjs
+tailwind.config.ts
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/app/globals.css">
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Explicit text highlighting for Light Mode */
+h1, h2, h3 {
+  color: #0f172a !important; /* Force deep slate for headers */
+  font-weight: 900 !important;
+}
+
+p {
+  color: #475569 !important; /* Professional slate-600 for body text */
+}
+
+.project-card {
+  @apply bg-white border border-slate-200 p-8 rounded-[2.5rem] transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 hover:border-emerald-500/50;
+}
+</file>
+
+<file path="src/app/layout.tsx">
+import './globals.css';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className={inter.className + " antialiased"}>{children}</body>
+    </html>
+  );
+}
+</file>
+
+<file path=".gitignore">
+node_modules
+.next
+.vercel
+.env*
+build
+dist
+</file>
+
+<file path="next-env.d.ts">
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+import "./.next/dev/types/routes.d.ts";
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
+</file>
+
+<file path="package.json">
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "autoprefixer": "latest",
+    "lucide-react": "latest",
+    "next": "latest",
+    "postcss": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwindcss": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "25.1.0",
+    "@types/react": "19.2.10",
+    "typescript": "5.9.3"
+  }
+}
+</file>
+
+<file path="postcss.config.mjs">
+export default {
+  plugins: {
+    '@tailwindcss/postcss': {},
+    autoprefixer: {},
+  },
+};
+</file>
+
+<file path="src/app/page.tsx">
 'use client';
 import React from 'react';
 import { Github, Linkedin, Mail, ShieldCheck, Zap, BarChart3, Globe, ExternalLink, Terminal, Cpu, Layout } from 'lucide-react';
@@ -32,6 +193,15 @@ const projects: Project[] = [
     icon: <Zap className="text-blue-600" size={24} />,
     color: "border-blue-500/10 bg-blue-50/20"
   },
+  {
+    title: "FINGRAPH AI",
+    subtitle: "Predictive Data Dashboard",
+    desc: "Built high-fidelity financial dashboard visualizing complex cash-flows with integrated Gemini-driven numeric analysis for personalized advice.",
+    tech: ["Recharts", "Gemini AI", "WebSockets"],
+    link: "#", 
+    icon: <BarChart3 className="text-purple-600" size={24} />,
+    color: "border-purple-500/10 bg-purple-50/20"
+  }
 ];
 
 const skillCategories = [
@@ -148,3 +318,66 @@ export default function Portfolio() {
     </main>
   );
 }
+</file>
+
+<file path="tailwind.config.ts">
+/** @type {import('tailwindcss').Config} */
+const config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      animation: {
+        'spin-slow': 'spin 10s linear infinite',
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+</file>
+
+</files>
